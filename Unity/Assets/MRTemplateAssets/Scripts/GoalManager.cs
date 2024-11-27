@@ -288,7 +288,7 @@ public class GoalManager : MonoBehaviour
     {
         m_CoachingUIParent.transform.localScale = Vector3.zero;
 
-        TurnOnVideoPlayer();
+        // TurnOnVideoPlayer();
 
         if (m_VideoPlayerToggle != null)
             m_VideoPlayerToggle.isOn = true;
