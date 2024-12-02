@@ -145,9 +145,6 @@ PlayerSettings:
   - {fileID: 11400000, guid: 39c92caa6a3ff0b40b8bd1fc5a77257b, type: 2}
   - {fileID: 11400000, guid: f8a442de0c8906f4d9c00184993fc289, type: 2}
   - {fileID: -944628639613478452, guid: c348712bda248c246b8c49b3db54643f, type: 3}
-  - {fileID: 11400000, guid: bfa1182bd221b4ca89619141f66f1260, type: 2}
-  - {fileID: -8196854396901781169, guid: 1a4c68ca72a83449f938d669337cb305, type: 2}
-  - {fileID: 11400000, guid: 56a98106ce58f09459a9990007b50acb, type: 2}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -168,7 +165,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
-    Android: com.unity.template.mixedreality
+    Android: com.google.firebase.hearclear
     Standalone: com.unity.template.mr
   buildNumber:
     Standalone: 0
