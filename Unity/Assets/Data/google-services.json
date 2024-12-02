@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "357262676687",
+    "project_id": "hearclear-c328c",
+    "storage_bucket": "hearclear-c328c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:357262676687:android:b1d1717e2dab4f74f39dba",
+        "android_client_info": {
+          "package_name": "com.google.firebase.hearclear"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdfGZ9auHfLCUFE3LciUPv_BHadjzteag"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
