@@ -52,7 +52,6 @@ public class CallGemini : MonoBehaviour
                 lastProcessedTranscription = currentTranscription;
                 unprocessedTranscriptions.Add(currentTranscription); // Add to the list of unprocessed transcriptions
             }
-            //transcriptionText.text += "\nis currently activated\n";
         }
     }
 
