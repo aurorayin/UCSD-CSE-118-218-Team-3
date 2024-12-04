@@ -5,7 +5,9 @@
 
 package com.example.memo.presentation
 
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
@@ -31,8 +33,13 @@ import androidx.wear.compose.material.MaterialTheme
 import androidx.wear.compose.material.Text
 import androidx.wear.compose.material.TimeText
 import androidx.wear.tooling.preview.devices.WearDevices
+
+import androidx.compose.runtime.*
+import com.google.firebase.database.*
+
 import com.example.memo.R
 import com.example.memo.presentation.theme.MemoTheme
+import com.google.firebase.Firebase
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +49,10 @@ class MainActivity : ComponentActivity() {
 
         setTheme(android.R.style.Theme_DeviceDefault)
 
+        // Initialize firebase
+        val database = FirebaseDatabase.getInstance("https://hearclear-c328c-default-rtdb.firebaseio.com/")
+        val myRef = database.getReference("memos")
+
         setContent {
             WearMemoApp()
         }
@@ -50,24 +61,25 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WearMemoApp() {
-    MemoTheme {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colors.background),
-            contentAlignment = Alignment.Center
-        ) {
-            TimeText()
-            MemoScreen(
-                memoList = listOf(
-                    "Meeting at 3 PM with Team A.",
-                    "Pick up groceries: Milk, Eggs, Bread.",
-                    "Call Doctor for appointment.",
-                    "Prepare for the presentation on Monday."
-                )
-            )
-        }
+    var memoList by remember { mutableStateOf<List<String>>(emptyList()) }
+
+    LaunchedEffect(Unit) {
+        val database = FirebaseDatabase.getInstance("https://hearclear-c328c-default-rtdb.firebaseio.com/").reference
+        val memoRef = database.child("memos")
+
+        memoRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val fetchedMemos = snapshot.children.mapNotNull { it.getValue(String::class.java) }
+                memoList = fetchedMemos
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.w(TAG, "Failed to read value.", error.toException())
+            }
+        })
     }
+
+    MemoScreen(memoList)
 }
 
 @Composable
