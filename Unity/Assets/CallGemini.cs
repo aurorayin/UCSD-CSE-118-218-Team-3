@@ -10,14 +10,9 @@ public class CallGemini : MonoBehaviour
     [SerializeField] private TMP_Text responseText; // Reference to the TextMeshPro component
     [SerializeField] private TMP_Text buttonStatus; // Reference to the activate/deactivate button
 
-    [SerializeField] private string gasURL = "https://script.google.com/macros/s/AKfycbzrpd2CBP82_H_lDMQLxmF-VLqK5mzLgSj-3OcsUhMvapkDQ6Vfu_HGcSR16Y4ZXNuvXQ/exec";
-
-    [SerializeField] private float checkInterval = 1.0f; // How often to check for updates
-
-    //private void Start()
-    //{
-    //    StartCoroutine(CheckForUpdates());
-    //}
+    private string gasURL = "https://script.google.com/macros/s/AKfycbxPU43XfROJG9AoiL0nFTGyBx-28JlUdLgC-dD-zOrNRg0CbXmLwdp_xBCNLtDpsalC-A/exec";
+    //[SerializeField] private string gasURL = "https://script.google.com/macros/s/AKfycbwxXMvkCBBWyvgjbt5iUWzr5jqVvvQvOH3e4qHgC8CJR2bmcJpjAMXXkFRjpNrCYY7J7g/exec";
+    
     private string lastProcessedTranscription = ""; // Last processed transcription
     private List<string> unprocessedTranscriptions = new List<string>(); // Store unprocessed transcriptions
 
@@ -29,10 +24,6 @@ public class CallGemini : MonoBehaviour
         // If button shows "Deactivate," it means the current state is "Activated"
         bool newActivationState = buttonStatus != null && buttonStatus.text == "Deactivate";
 
-        //transcriptionText.text += buttonStatus.text;
-        //transcriptionText.text += newActivationState;
-        //transcriptionText.text += isCurrentlyActivated;
-        //transcriptionText.text += "\n";
         // If state has changed
         if (newActivationState != isCurrentlyActivated)
         {
@@ -65,29 +56,6 @@ public class CallGemini : MonoBehaviour
         }
     }
 
-    //private IEnumerator CheckForUpdates()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(checkInterval);
-
-    //        // Get the current transcription from the TextMeshPro component
-    //        string currentTranscription = transcriptionText.text;
-    //        string[] sections = currentTranscription.Split(new[] { ";;" }, System.StringSplitOptions.None);
-
-    //        if (sections.Length > 0)
-    //        {
-    //            string lastSection = sections[sections.Length - 1].Trim();
-
-    //            // Ensure the last section is complete (not empty) and different from the last processed sentence
-    //            if (!string.IsNullOrWhiteSpace(lastSection) && lastSection != lastCompleteSentence)
-    //            {
-    //                lastCompleteSentence = lastSection; // Update the last complete sentence
-    //                StartCoroutine(SendDataToGAS(lastCompleteSentence)); // Call Gemini with the new sentence
-    //            }
-    //        }
-    //    }
-    //}
 
     // Send a batch of transcriptions to Gemini
     private IEnumerator SendBatchToGAS(List<string> transcriptions)
