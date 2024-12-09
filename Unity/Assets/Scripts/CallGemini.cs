@@ -10,9 +10,8 @@ public class CallGemini : MonoBehaviour
     [SerializeField] private TMP_Text responseText; // Reference to the TextMeshPro component
     [SerializeField] private TMP_Text buttonStatus; // Reference to the activate/deactivate button
 
-    private string gasURL = "https://script.google.com/macros/s/AKfycbzKM66sePA1NH_c8D0w14sGARjxM6ZRC94yatdIoK9ZNml-_LBx2ALtxuoVXLxtI0K4rw/exec";
-    //[SerializeField] private string gasURL = "https://script.google.com/macros/s/AKfycbwxXMvkCBBWyvgjbt5iUWzr5jqVvvQvOH3e4qHgC8CJR2bmcJpjAMXXkFRjpNrCYY7J7g/exec";
-    private string prompt = "We are building an hearing assistant application, providing summarizations for real-time transcription of conversations, in order to help the elderly to be able to have clear and meaningful conversations with other people. Based on this, summarize the following dialogue into a simple, clear and short one-sentence or two-sentence memo: ";
+    private string gasURL = "https://script.google.com/macros/s/AKfycbxMsqk70alZx3P0qzrHzBJFffBMFEytZGkg6kL5e66DB1453GPa3PnULF5JCl9I4pC3-A/exec";
+    private string prompt = "Summarize the following dialogue into a simple, clear and short one-sentence or two-sentence memo: ";
     private string lastProcessedTranscription = ""; // Last processed transcription
     private List<string> unprocessedTranscriptions = new List<string>(); // Store unprocessed transcriptions
 
